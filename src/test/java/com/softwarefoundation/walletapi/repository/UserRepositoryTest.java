@@ -1,10 +1,10 @@
 package com.softwarefoundation.walletapi.repository;
 
 import com.softwarefoundation.walletapi.entity.User;
-import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.*;
+
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -18,7 +18,7 @@ class UserRepositoryTest {
     @Autowired
     UserRepository userRepository;
 
-    @BeforeAll
+    @BeforeEach
     public void setUp(){
         User user = new User();
         user.setNome("Alice");
@@ -28,7 +28,7 @@ class UserRepositoryTest {
         userRepository.save(user);
     }
 
-    @AfterAll
+    @AfterEach
     public void tearDown(){
         userRepository.deleteAll();
     }
@@ -45,8 +45,9 @@ class UserRepositoryTest {
         assertNotNull(userRetorno);
     }
 
+    @Test
     public void testFindByEmail(){
-        Optional<User> userRetorno = userRepository.findByEmail(EMAIL);
+        Optional<User> userRetorno = userRepository.findByEmailEquals(EMAIL);
 
         assertTrue(userRetorno.isPresent());
         assertEquals(userRetorno.get().getEmail(), EMAIL);
