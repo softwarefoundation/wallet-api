@@ -21,7 +21,7 @@ class UserRepositoryTest {
 
         User userRetorno = userRepository.save(user);
 
-        Assertions.assertNull(userRetorno);
+        Assertions.assertNotNull(userRetorno);
     }
 
 }
