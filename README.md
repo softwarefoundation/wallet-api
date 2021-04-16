@@ -33,5 +33,8 @@ Palavras chave: Mockito, Junit, Tokens JWT, Spring Security, Flyway, H2, Integra
 Esse projeto foi desenvolvido durante o curso: [API RESTfull com Spring Boot utilizando TDD, CI e CD](https://www.udemy.com/course/api-restfull-com-spring-boot-utilizando-tdd-ci-e-cd/ ) 
 
 
-Made with :heart: by Dherkyan Ribeiro
+Made with :heart: by [Dherkyan Ribeiro](https://www.credly.com/users/dherkyan-ribeiro-da-silva/badges)
+
+
+![alt Oracle Certified Professional, Java SE 7 Programmer](https://images.credly.com/size/110x110/images/3661e48f-ee1c-47fc-a474-b84fca370a19/Oracle-Certification-badge_OC-Professional600X600.png)
 
