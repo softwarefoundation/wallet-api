@@ -1,6 +1,8 @@
 package com.softwarefoundation.walletapi.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.softwarefoundation.walletapi.dto.UserDto;
 import com.softwarefoundation.walletapi.entity.User;
 import com.softwarefoundation.walletapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +47,7 @@ public class UserControllerTest {
         return user;
     }
 
-    public String getJsonPayload(){
+    public String getJsonPayload() throws JsonProcessingException {
         UserDto dto = new UserDto();
         dto.setNome(NOME);
         dto.setEmail(EMAIL);

@@ -7,7 +7,7 @@ import java.util.List;
 @Data
 public class Response<T> {
 
-    private T date;
+    private T data;
     private List<String> erros;
 
 }
