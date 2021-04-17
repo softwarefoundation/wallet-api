@@ -26,7 +26,18 @@ Aprenda a criar APIs profissionais com testes utilizando Spring Boot e Java 11, 
 
 Palavras chave: Mockito, Junit, Tokens JWT, Spring Security, Flyway, H2, Integração Contínua e Deploy Automatizado com o Travis CI.
 
+## Banco de dados
+A aplicação utiliza o banco de dados H2 e como é um banco em memória ele é recriado a cada execução da aplicação.
+  
+### Acesso
+  O banco de dados pode ser acesso pelo console WEB, que fica disponível na mesma url da aplicação + /h2-console/ Exe: http://localhost:8080/h2-console/ 
 
+Configuração do console WEB: Para fazer login no console web utilize as configurações abaixo:
+* JDBC URL: jdbc:h2:mem:wallet
+* User Name: root
+* Password:
+
+Essas informações podem ser encontraradas no arquivoapplication.properties
 
 ## Referências:
 
