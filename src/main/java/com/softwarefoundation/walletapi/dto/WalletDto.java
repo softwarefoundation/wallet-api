@@ -11,10 +11,12 @@ import java.math.BigDecimal;
 public class WalletDto {
 
     private Long id;
-    @Length(max = 3)
-    @NotNull
+
+    @Length(min = 3, message = "O nome deve ter no mínimo 3 caracteres")
+    @NotNull(message = "O nome é obrigatório")
     private String nome;
-    @NotNull
+
+    @NotNull(message = "O valor é obrigatório")
     private BigDecimal valor;
 
     public Wallet toEntity(){

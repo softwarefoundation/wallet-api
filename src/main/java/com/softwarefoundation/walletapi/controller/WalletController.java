@@ -32,7 +32,7 @@ public class WalletController {
 
         Wallet wallet = walletService.save(dto.toEntity());
         response.setData(wallet.toDto());
-        return ResponseEntity.ok().body(response);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
 }
