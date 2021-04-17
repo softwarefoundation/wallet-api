@@ -5,6 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.softwarefoundation.walletapi.dto.UserDto;
 import com.softwarefoundation.walletapi.entity.User;
 import com.softwarefoundation.walletapi.service.UserService;
+import org.junit.jupiter.api.Test;
+import org.mockito.BDDMockito;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,7 +33,9 @@ public class UserControllerTest {
     @Autowired
     MockMvc mockMvc;
 
+    @Test
     public void testSave() throws Exception {
+        BDDMockito.given(userService.save(Mockito.any(User.class))).willReturn(getUserMock());
         mockMvc.perform(MockMvcRequestBuilders
                 .post(URL)
                 .content(getJsonPayload())
