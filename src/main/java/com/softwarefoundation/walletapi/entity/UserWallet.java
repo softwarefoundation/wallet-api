@@ -1,5 +1,6 @@
 package com.softwarefoundation.walletapi.entity;
 
+import com.softwarefoundation.walletapi.dto.UserWalletDto;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,4 +22,12 @@ public class UserWallet implements Serializable {
     @JoinColumn(name = "wallet", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Wallet wallet;
+
+    public UserWalletDto toDto(){
+        UserWalletDto userWalletDto = new UserWalletDto();
+        userWalletDto.setId(getId());
+        userWalletDto.setUser(getUser().getId());
+        userWalletDto.setWallet(getWallet().getId());
+        return userWalletDto;
+    }
 }

@@ -4,8 +4,10 @@ import com.softwarefoundation.walletapi.entity.UserWallet;
 import com.softwarefoundation.walletapi.repository.UserWalletRepository;
 import com.softwarefoundation.walletapi.service.UserWalletService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class UserWalletImpl implements UserWalletService {
+@Service
+public class UserWalletServiceImpl implements UserWalletService {
 
     @Autowired
     private UserWalletRepository userWalletRepository;
