@@ -2,6 +2,7 @@ package com.softwarefoundation.walletapi.controller;
 
 import com.softwarefoundation.walletapi.entity.User;
 import com.softwarefoundation.walletapi.service.UserService;
+import com.softwarefoundation.walletapi.response.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
