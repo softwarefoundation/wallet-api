@@ -43,6 +43,6 @@ Made with :heart: by [Dherkyan Ribeiro](https://www.credly.com/users/dherkyan-ri
 .wallet-api-msg {color: goldenrod;text-align: center; font-weight: bold;}
 </style>
 
-<p class="wallet-api-msg">
+<p class="color: goldenrod;text-align: center; font-weight: bold;">
     SELECT * FROM World WHERE Someone LIKE %You%
 </p>
