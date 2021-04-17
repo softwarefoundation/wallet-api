@@ -47,7 +47,7 @@ public class UserControllerTest {
         .andExpect(MockMvcResultMatchers.jsonPath("$.data.id").value(ID))
         .andExpect(MockMvcResultMatchers.jsonPath("$.data.nome").value(NOME))
         .andExpect(MockMvcResultMatchers.jsonPath("$.data.email").value(EMAIL))
-        .andExpect(MockMvcResultMatchers.jsonPath("$.data.senha").value(SENHA));
+        .andExpect(MockMvcResultMatchers.jsonPath("$.data.senha").doesNotExist());
     }
 
     @Test

@@ -4,6 +4,7 @@ import com.softwarefoundation.walletapi.dto.UserDto;
 import com.softwarefoundation.walletapi.entity.User;
 import com.softwarefoundation.walletapi.service.UserService;
 import com.softwarefoundation.walletapi.response.Response;
+import com.softwarefoundation.walletapi.util.Bcrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,7 +43,7 @@ public class UserController {
         user.setId(dto.getId());
         user.setNome(dto.getNome());
         user.setEmail(dto.getEmail());
-        user.setSenha(dto.getSenha());
+        user.setSenha(Bcrypt.getHash(dto.getSenha()));
         return user;
     }
 
@@ -51,7 +52,6 @@ public class UserController {
         dto.setId(user.getId());
         dto.setNome(user.getNome());
         dto.setEmail(user.getEmail());
-        dto.setSenha(user.getSenha());
         return dto;
     }
 
