@@ -1,5 +1,6 @@
 package com.softwarefoundation.walletapi.entity;
 
+import com.softwarefoundation.walletapi.dto.WalletDto;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,5 +22,13 @@ public class Wallet implements Serializable {
 
     @NotNull
     private BigDecimal valor;
+
+    public WalletDto toDto(){
+        WalletDto dto = new WalletDto();
+        dto.setId(getId());
+        dto.setNome(getNome());
+        dto.setValor(getValor());
+        return dto;
+    }
 
 }
