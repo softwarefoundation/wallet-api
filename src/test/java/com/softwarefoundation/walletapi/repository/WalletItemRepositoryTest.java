@@ -9,20 +9,27 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
 import javax.validation.ConstraintViolationException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest
 public class WalletItemRepositoryTest {
 
     private static final Date DATA = new Date();
-    private static final String TIPO = "ENTRADA";
+    private static final TipoEnum TIPO = TipoEnum.ENTRADA;
     private static final String DESCRICAO = "Conta de LUZ";
     private static final BigDecimal VALOR = new BigDecimal(65);
     private long walletId = 0;
@@ -99,5 +106,45 @@ public class WalletItemRepositoryTest {
         Optional<WalletItem> walletItemOptional = walletItemRepository.findById(walletItem.getId());
         assertFalse(walletItemOptional.isPresent());
     }
+
+    @Test
+    public void findBetweenDates(){
+        Optional<Wallet> walletOptional = walletRepository.findById(walletId);
+        LocalDateTime localDateTime = DATA.toInstant().atZone(ZoneOffset.systemDefault()).toLocalDateTime();
+        Date dataAtualMais5Dias = Date.from(localDateTime.plusDays(5).atZone(ZoneId.systemDefault()).toInstant());
+        Date dataAtualMais7Dias = Date.from(localDateTime.plusDays(7).atZone(ZoneId.systemDefault()).toInstant());
+
+        walletItemRepository.save(new WalletItem(null, walletOptional.get(),dataAtualMais5Dias ,TipoEnum.ENTRADA,DESCRICAO,VALOR));
+        walletItemRepository.save(new WalletItem(null, walletOptional.get(),dataAtualMais7Dias ,TipoEnum.ENTRADA,DESCRICAO,VALOR));
+
+        PageRequest pageRequest =  PageRequest.of(0,10);
+        Page<WalletItem> walletItemsPage = walletItemRepository.findByWalletIdAndAndDataCadastroGreaterThanEqualAndDataCadastroIsLessThanEqual(walletId, DATA, dataAtualMais5Dias, pageRequest);
+
+        assertEquals(walletItemsPage.getContent().size(),2);
+        assertEquals(walletItemsPage.getTotalElements(),2);
+        assertEquals(walletItemsPage.getContent().get(0).getWallet().getId(), walletId);
+    }
+
+    @Test
+    public void testFindByTipo(){
+        List<WalletItem> walletItems = walletItemRepository.findByWalletIdAndTipo(walletId,TIPO);
+
+        assertEquals(walletItems.size(),1);
+        assertEquals(walletItems.get(0).getTipo(),TIPO);
+
+    }
+
+    @Test
+    public void testFindByTipoSaida(){
+        Optional<Wallet> walletOptional = walletRepository.findById(walletId);
+        walletItemRepository.save(new WalletItem(null, walletOptional.get(), DATA, TipoEnum.SAIDA, DESCRICAO,VALOR));
+
+        List<WalletItem> walletItems = walletItemRepository.findByWalletIdAndTipo(walletId, TipoEnum.SAIDA);
+
+        assertEquals(walletItems.size(), 1);
+        assertEquals(walletItems.get(0).getTipo(), TipoEnum.SAIDA);
+    }
+
+
 
 }
