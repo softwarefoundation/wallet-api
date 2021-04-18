@@ -50,10 +50,10 @@ Made with :heart: by [Dherkyan Ribeiro](https://www.credly.com/users/dherkyan-ri
 ![alt Oracle Certified Professional, Java SE 7 Programmer](https://images.credly.com/size/110x110/images/3661e48f-ee1c-47fc-a474-b84fca370a19/Oracle-Certification-badge_OC-Professional600X600.png)
 
 
-<style>
-.wallet-api-msg {color: goldenrod;text-align: center; font-weight: bold;}
-</style>
-
-<p class="color: goldenrod;text-align: center; font-weight: bold;">
+<p align="center">
     SELECT * FROM World WHERE Someone LIKE %You%
+</p>
+
+<p style="color: goldenrod">
+    TESTETE
 </p>
