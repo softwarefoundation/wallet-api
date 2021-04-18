@@ -5,7 +5,7 @@ import com.softwarefoundation.walletapi.entity.WalletItem;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import static org.springframework.test.util.AssertionErrors.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -20,15 +20,23 @@ public class WalletItemRepositoryTest {
 
     @Autowired
     WalletItemRepository walletItemRepository;
+    @Autowired
+    WalletRepository walletRepository;
 
     @Test
     public void testSave(){
         Wallet wallet = new Wallet();
         wallet.setNome("Carteira Principal");
         wallet.setValor(BigDecimal.valueOf(125));
+        walletRepository.save(wallet);
+
         WalletItem walletItem = new WalletItem(1L, wallet, DATA, TIPO, DESCRICAO, VALOR);
         WalletItem walletItemRetorno = walletItemRepository.save(walletItem);
         assertNotNull(walletItemRetorno);
+        assertEquals(walletItemRetorno.getTipo(), TIPO);
+        assertEquals(walletItemRetorno.getDescricao(), DESCRICAO);
+        assertEquals(walletItemRetorno.getValor(), VALOR);
+        assertEquals(walletItemRetorno.getWallet().getId(), wallet.getId());
     }
 
 }

@@ -26,8 +26,8 @@ public class WalletItem implements Serializable {
     private Wallet wallet;
 
     @NotNull(message = "Data é obrigatório")
-    @Column(name = "data")
-    private Date data;
+    @Column(name = "dataCadastro")
+    private Date dataCadastro;
 
     @NotNull(message = "Tipo é obrigatório")
     @Column(name = "tipo")
