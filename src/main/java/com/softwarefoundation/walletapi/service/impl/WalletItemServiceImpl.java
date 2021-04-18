@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Service
@@ -30,4 +31,11 @@ public class WalletItemServiceImpl implements WalletItemService {
         PageRequest pageRequest = PageRequest.of(pagina, quantideDeItensPorPagina);
         return walletItemRepository.findByWalletIdAndAndDataCadastroGreaterThanEqualAndDataCadastroIsLessThanEqual(walletId, dataInicio, dataFim, pageRequest);
     }
+
+    @Override
+    public BigDecimal sumByWalletId(Long walletId) {
+        return walletItemRepository.sumByWalletId(walletId);
+    }
+
+
 }

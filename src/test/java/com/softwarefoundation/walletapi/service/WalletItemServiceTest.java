@@ -61,6 +61,14 @@ public class WalletItemServiceTest {
         assertEquals(walletItemPage.getContent().get(0).getDescricao(), DESCRICAO);
     }
 
+    @Test
+    public void testSumByWallet(){
+        BigDecimal valor = new BigDecimal(100);
+        BDDMockito.given(walletItemRepository.sumByWalletId(Mockito.anyLong())).willReturn(valor);
+        BigDecimal total = walletItemService.sumByWalletId(1L);
+        assertEquals(total.compareTo(valor), 0);
+    }
+
     private WalletItem getMockWalletItem(){
         Wallet wallet = new Wallet();
         wallet.setId(1L);
