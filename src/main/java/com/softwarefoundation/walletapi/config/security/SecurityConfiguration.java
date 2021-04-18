@@ -12,6 +12,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        liberarAcessoAoconsoleWebH2(http);
         http.csrf()
                 .disable()
                 .exceptionHandling()
@@ -24,6 +25,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .anyRequest()
                 .authenticated();
+    }
+
+    private void liberarAcessoAoconsoleWebH2(HttpSecurity http) throws Exception {
+        http.headers().frameOptions().disable();
+
+        http.authorizeRequests().antMatchers("/").permitAll().and()
+                .authorizeRequests().antMatchers("**", "/console/**", "/","**/favicon.ico").permitAll();
 
     }
 }
