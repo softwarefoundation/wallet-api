@@ -2,6 +2,7 @@ package com.softwarefoundation.walletapi.repository;
 
 import com.softwarefoundation.walletapi.entity.Wallet;
 import com.softwarefoundation.walletapi.entity.WalletItem;
+import com.softwarefoundation.walletapi.util.enums.TipoEnum;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,10 +31,10 @@ public class WalletItemRepositoryTest {
         wallet.setValor(BigDecimal.valueOf(125));
         walletRepository.save(wallet);
 
-        WalletItem walletItem = new WalletItem(1L, wallet, DATA, TIPO, DESCRICAO, VALOR);
+        WalletItem walletItem = new WalletItem(1L, wallet, DATA, TipoEnum.ENTRADA, DESCRICAO, VALOR);
         WalletItem walletItemRetorno = walletItemRepository.save(walletItem);
         assertNotNull(walletItemRetorno);
-        assertEquals(walletItemRetorno.getTipo(), TIPO);
+        assertEquals(walletItemRetorno.getTipo(), TipoEnum.ENTRADA);
         assertEquals(walletItemRetorno.getDescricao(), DESCRICAO);
         assertEquals(walletItemRetorno.getValor(), VALOR);
         assertEquals(walletItemRetorno.getWallet().getId(), wallet.getId());

@@ -1,11 +1,13 @@
 package com.softwarefoundation.walletapi.entity;
 
+import com.softwarefoundation.walletapi.util.enums.TipoEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -29,9 +31,11 @@ public class WalletItem implements Serializable {
     @Column(name = "dataCadastro")
     private Date dataCadastro;
 
+    @Pattern(regexp = "^(ENTRADA|SAIDA)$", message = "Os tipos aceitos são: ENTRADA, SAIDA")
     @NotNull(message = "Tipo é obrigatório")
     @Column(name = "tipo")
-    private String tipo;
+    @Enumerated(EnumType.STRING)
+    private TipoEnum tipo;
 
     @NotNull(message = "Descrição é Obrigatório")
     @Column(name = "descricao")
