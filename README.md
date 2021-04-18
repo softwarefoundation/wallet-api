@@ -41,7 +41,7 @@ Essas informações podem ser encontraradas no arquivoapplication.properties
 
 ## Referências:
 
-Esse projeto foi desenvolvido durante o curso: [API RESTfull com Spring Boot utilizando TDD, CI e CD](https://www.udemy.com/course/api-restfull-com-spring-boot-utilizando-tdd-ci-e-cd/ ) 
+Esse projeto foi desenvolvido durante o curso: [API RESTfull com Spring Boot utilizando TDD, CI e CD](https://www.udemy.com/course/api-restfull-com-spring-boot-utilizando-tdd-ci-e-cd/ ) /  [Repositório de Referência](https://github.com/vitoralves/walletAPI)
 
 
 Made with :heart: by [Dherkyan Ribeiro](https://www.credly.com/users/dherkyan-ribeiro-da-silva/badges)
