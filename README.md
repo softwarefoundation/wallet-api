@@ -54,6 +54,6 @@ Made with :heart: by [Dherkyan Ribeiro](https://www.credly.com/users/dherkyan-ri
     SELECT * FROM World WHERE Someone LIKE %You%
 </p>
 
-<p style="color: goldenrod">
+<p color="goldenrod">
     TESTETE
 </p>
