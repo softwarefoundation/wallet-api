@@ -6,12 +6,10 @@ import com.softwarefoundation.walletapi.util.enums.TipoEnum;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 
 import javax.validation.ConstraintViolationException;
 
@@ -31,9 +29,9 @@ public class WalletItemRepositoryTest {
     private static final Date DATA = new Date();
     private static final TipoEnum TIPO = TipoEnum.ENTRADA;
     private static final String DESCRICAO = "Conta de LUZ";
-    private static final BigDecimal VALOR = new BigDecimal(65);
-    private long walletId = 0;
-    private long walletItemId = 0;
+    private static final BigDecimal VALOR = new BigDecimal(50);
+    private long savedWalletId = 0;
+    private long savedWalletItemId = 0;
 
     @Autowired
     WalletItemRepository walletItemRepository;
@@ -44,13 +42,12 @@ public class WalletItemRepositoryTest {
     public void setUp(){
         Wallet wallet = new Wallet();
         wallet.setNome("Carteira Principal");
-        wallet.setValor(BigDecimal.valueOf(250));
         walletRepository.save(wallet);
 
         WalletItem walletItem = new WalletItem(null, wallet, DATA, TipoEnum.ENTRADA, DESCRICAO, VALOR);
         WalletItem walletItemRetorno = walletItemRepository.save(walletItem);
-        walletId = wallet.getId();
-        walletItemId = walletItemRetorno.getId();
+        savedWalletId = wallet.getId();
+        savedWalletItemId = walletItemRetorno.getId();
     }
 
     @AfterEach
@@ -63,7 +60,6 @@ public class WalletItemRepositoryTest {
     public void testSave(){
         Wallet wallet = new Wallet();
         wallet.setNome("Carteira Principal");
-        wallet.setValor(BigDecimal.valueOf(125));
         walletRepository.save(wallet);
 
         WalletItem walletItem = new WalletItem(1L, wallet, DATA, TipoEnum.ENTRADA, DESCRICAO, VALOR);
@@ -85,20 +81,20 @@ public class WalletItemRepositoryTest {
 
     @Test
     public void testUpdate(){
-        Optional<WalletItem> walletItemOptional = walletItemRepository.findById(walletItemId);
+        Optional<WalletItem> walletItemOptional = walletItemRepository.findById(savedWalletItemId);
         String novaDecricao = "Caterira Reserva";
         WalletItem item = walletItemOptional.get();
         item.setDescricao(novaDecricao);
         walletItemRepository.save(item);
 
-        Optional<WalletItem> walletItemOptional2 = walletItemRepository.findById(walletItemId);
+        Optional<WalletItem> walletItemOptional2 = walletItemRepository.findById(savedWalletItemId);
         assertEquals(walletItemOptional2.get().getDescricao(), novaDecricao);
 
     }
 
     @Test
     public void deleteWalletItem(){
-        Optional<Wallet> walletOptional = walletRepository.findById(walletId);
+        Optional<Wallet> walletOptional = walletRepository.findById(savedWalletId);
         WalletItem walletItem = new WalletItem(null, walletOptional.get(), DATA, TipoEnum.ENTRADA, DESCRICAO, VALOR);
         walletItemRepository.save(walletItem);
         walletItemRepository.deleteById(walletItem.getId());
@@ -109,7 +105,7 @@ public class WalletItemRepositoryTest {
 
     @Test
     public void findBetweenDates(){
-        Optional<Wallet> walletOptional = walletRepository.findById(walletId);
+        Optional<Wallet> walletOptional = walletRepository.findById(savedWalletId);
         LocalDateTime localDateTime = DATA.toInstant().atZone(ZoneOffset.systemDefault()).toLocalDateTime();
         Date dataAtualMais5Dias = Date.from(localDateTime.plusDays(5).atZone(ZoneId.systemDefault()).toInstant());
         Date dataAtualMais7Dias = Date.from(localDateTime.plusDays(7).atZone(ZoneId.systemDefault()).toInstant());
@@ -118,16 +114,16 @@ public class WalletItemRepositoryTest {
         walletItemRepository.save(new WalletItem(null, walletOptional.get(),dataAtualMais7Dias ,TipoEnum.ENTRADA,DESCRICAO,VALOR));
 
         PageRequest pageRequest =  PageRequest.of(0,10);
-        Page<WalletItem> walletItemsPage = walletItemRepository.findByWalletIdAndAndDataCadastroGreaterThanEqualAndDataCadastroIsLessThanEqual(walletId, DATA, dataAtualMais5Dias, pageRequest);
+        Page<WalletItem> walletItemsPage = walletItemRepository.findByWalletIdAndAndDataCadastroGreaterThanEqualAndDataCadastroIsLessThanEqual(savedWalletId, DATA, dataAtualMais5Dias, pageRequest);
 
         assertEquals(walletItemsPage.getContent().size(),2);
         assertEquals(walletItemsPage.getTotalElements(),2);
-        assertEquals(walletItemsPage.getContent().get(0).getWallet().getId(), walletId);
+        assertEquals(walletItemsPage.getContent().get(0).getWallet().getId(), savedWalletId);
     }
 
     @Test
     public void testFindByTipo(){
-        List<WalletItem> walletItems = walletItemRepository.findByWalletIdAndTipo(walletId,TIPO);
+        List<WalletItem> walletItems = walletItemRepository.findByWalletIdAndTipo(savedWalletId,TIPO);
 
         assertEquals(walletItems.size(),1);
         assertEquals(walletItems.get(0).getTipo(),TIPO);
@@ -136,15 +132,25 @@ public class WalletItemRepositoryTest {
 
     @Test
     public void testFindByTipoSaida(){
-        Optional<Wallet> walletOptional = walletRepository.findById(walletId);
+        Optional<Wallet> walletOptional = walletRepository.findById(savedWalletId);
         walletItemRepository.save(new WalletItem(null, walletOptional.get(), DATA, TipoEnum.SAIDA, DESCRICAO,VALOR));
 
-        List<WalletItem> walletItems = walletItemRepository.findByWalletIdAndTipo(walletId, TipoEnum.SAIDA);
+        List<WalletItem> walletItems = walletItemRepository.findByWalletIdAndTipo(savedWalletId, TipoEnum.SAIDA);
 
         assertEquals(walletItems.size(), 1);
         assertEquals(walletItems.get(0).getTipo(), TipoEnum.SAIDA);
     }
 
+    @Test
+    public void testSumByWallet(){
+        Optional<Wallet> walletOptional = walletRepository.findById(savedWalletId);
+        walletItemRepository.save(new WalletItem(null, walletOptional.get(), DATA, TIPO, DESCRICAO, BigDecimal.valueOf(150.80)));
+
+        BigDecimal total = walletItemRepository.sumByWalletId(savedWalletId);
+        System.out.println("TOTAL: "+total.toString());
+        assertEquals(total.compareTo(BigDecimal.valueOf(200.80)),0);
+
+    }
 
 
 }
