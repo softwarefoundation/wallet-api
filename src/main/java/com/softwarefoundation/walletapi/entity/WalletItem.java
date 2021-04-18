@@ -31,7 +31,7 @@ public class WalletItem implements Serializable {
     @Column(name = "dataCadastro")
     private Date dataCadastro;
 
-    @Pattern(regexp = "^(ENTRADA|SAIDA)$", message = "Os tipos aceitos são: ENTRADA, SAIDA")
+    //@Pattern(regexp = "^(ENTRADA|SAIDA)", message = "Os tipos aceitos são: ENTRADA, SAIDA")
     @NotNull(message = "Tipo é obrigatório")
     @Column(name = "tipo")
     @Enumerated(EnumType.STRING)
