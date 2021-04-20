@@ -1,4 +1,4 @@
-package com.softwarefoundation.walletapi.security.config;
+package com.softwarefoundation.walletapi.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
