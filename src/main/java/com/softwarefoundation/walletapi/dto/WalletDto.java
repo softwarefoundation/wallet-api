@@ -16,14 +16,10 @@ public class WalletDto {
     @NotNull(message = "O nome é obrigatório")
     private String nome;
 
-    @NotNull(message = "O valor é obrigatório")
-    private BigDecimal valor;
-
     public Wallet toEntity(){
         Wallet wallet = new Wallet();
         wallet.setId(getId());
         wallet.setNome(getNome());
-        wallet.setValor(getValor());
         return wallet;
     }
 }
