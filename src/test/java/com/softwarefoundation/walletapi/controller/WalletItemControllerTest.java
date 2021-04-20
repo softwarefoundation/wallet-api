@@ -4,8 +4,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.softwarefoundation.walletapi.dto.WalletItemDTO;
 import com.softwarefoundation.walletapi.entity.User;
+import com.softwarefoundation.walletapi.entity.UserWallet;
 import com.softwarefoundation.walletapi.entity.Wallet;
 import com.softwarefoundation.walletapi.entity.WalletItem;
+import com.softwarefoundation.walletapi.service.UserService;
+import com.softwarefoundation.walletapi.service.UserWalletService;
 import com.softwarefoundation.walletapi.service.WalletItemService;
 import com.softwarefoundation.walletapi.util.enums.TipoEnum;
 import org.junit.jupiter.api.Test;
@@ -18,6 +21,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -38,6 +42,10 @@ public class WalletItemControllerTest {
 
     @MockBean
     WalletItemService walletItemService;
+    @MockBean
+    UserWalletService userWalletService;
+    @MockBean
+    UserService userService;
 
     @Autowired
     MockMvc mvc;
@@ -52,6 +60,7 @@ public class WalletItemControllerTest {
     private static final String URL = "/wallet-item";
 
     @Test
+    @WithMockUser
     public void testSave() throws Exception {
 
         BDDMockito.given(walletItemService.save(Mockito.any(WalletItem.class))).willReturn(getMockWalletItem());
@@ -70,6 +79,7 @@ public class WalletItemControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void testFindBetweenDates() throws Exception {
         List<WalletItem> list = new ArrayList<>();
         list.add(getMockWalletItem());
@@ -82,7 +92,8 @@ public class WalletItemControllerTest {
         user.setId(1L);
 
         BDDMockito.given(walletItemService.findBetweenDates(Mockito.anyLong(), Mockito.any(Date.class), Mockito.any(Date.class), Mockito.anyInt())).willReturn(page);
-
+        BDDMockito.given(userService.findByEmail(Mockito.anyString())).willReturn(Optional.of(user));
+        BDDMockito.given(userWalletService.findByUsersIdAndWalletId(Mockito.anyLong(), Mockito.anyLong())).willReturn(Optional.of(new UserWallet()));
 
         mvc.perform(MockMvcRequestBuilders.get(URL + "/1?dataInicio=" + dataInicio + "&dataFim=" + dataFim)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -98,6 +109,7 @@ public class WalletItemControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void testFindByType() throws Exception {
         List<WalletItem> list = new ArrayList<>();
         list.add(getMockWalletItem());
@@ -118,6 +130,7 @@ public class WalletItemControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void testSumByWallet() throws Exception {
         BigDecimal value = BigDecimal.valueOf(536.90);
 
@@ -132,6 +145,7 @@ public class WalletItemControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void testUpdate() throws Exception {
 
         String descricao = "Nova descrição";
@@ -155,6 +169,7 @@ public class WalletItemControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void testUpdateWalletChange() throws Exception {
 
         Wallet w = new Wallet();
@@ -174,6 +189,7 @@ public class WalletItemControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void testUpdateInvalidId() throws Exception {
 
         BDDMockito.given(walletItemService.findById(Mockito.anyLong())).willReturn(Optional.empty());
@@ -188,6 +204,7 @@ public class WalletItemControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void testDelete() throws JsonProcessingException, Exception {
 
         BDDMockito.given(walletItemService.findById(Mockito.anyLong())).willReturn(Optional.of(new WalletItem()));
@@ -200,6 +217,7 @@ public class WalletItemControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void testDeleteInvalid() throws Exception {
 
         BDDMockito.given(walletItemService.findById(Mockito.anyLong())).willReturn(Optional.empty());
