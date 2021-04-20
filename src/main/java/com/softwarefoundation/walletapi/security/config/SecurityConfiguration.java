@@ -1,5 +1,6 @@
-package com.softwarefoundation.walletapi.config.security;
+package com.softwarefoundation.walletapi.security.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
