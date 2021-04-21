@@ -9,7 +9,9 @@ import com.softwarefoundation.walletapi.service.UserWalletService;
 import com.softwarefoundation.walletapi.service.WalletItemService;
 import com.softwarefoundation.walletapi.util.Util;
 import com.softwarefoundation.walletapi.util.enums.TipoEnum;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.data.domain.Page;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -26,6 +28,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @RestController
 @RequestMapping("/wallet-item")
 public class WalletItemController {
@@ -79,7 +82,7 @@ public class WalletItemController {
     public ResponseEntity<Response<List<WalletItemDTO>>> findByWalletIdAndType(@PathVariable("walletId") Long walletId,
                                                                                @RequestParam("tipo") String tipo) {
 
-
+        log.info(MessageFormat.format("Buscando por cateira {0} do tipo {1}", walletId, tipo));
         Response<List<WalletItemDTO>> response = new Response<>();
 
         List<WalletItem> list = walletItemService.findByWalletAndType(walletId, TipoEnum.valueOf(tipo));
