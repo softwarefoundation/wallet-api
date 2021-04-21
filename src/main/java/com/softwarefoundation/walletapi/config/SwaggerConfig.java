@@ -2,6 +2,7 @@ package com.softwarefoundation.walletapi.config;
 
 import com.softwarefoundation.walletapi.security.utils.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,6 +21,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 
+    @Value(value = "${app.version}")
+    private String appVersion;
 
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
@@ -37,7 +40,7 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder().title("Wallet API")
-                .description("Wallet API - Documentação de acesso aos endpoints.").version("1.0")
+                .description("Wallet API - Documentação de acesso aos endpoints.").version(appVersion)
                 .build();
     }
 
