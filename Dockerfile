@@ -4,8 +4,14 @@ ENV APP_HOME=/opt/app/
 
 WORKDIR $APP_HOME
 
-COPY build/libs/wallet-api-0.0.1-SNAPSHOT.jar $APP_HOME/wallet-api.jar
+COPY . .
 
-EXPOSE 8080
+RUN gradle build -x test
 
-ENTRYPOINT ["java", "-jar", "wallet-api.jar"]
+RUN cp -R /opt/app/build/libs/* $APP_HOME/wallet-api.jar
+
+RUN gradle clean
+
+EXPOSE $PORT
+
+CMD ["java", "-jar", "-Dspring.profiles.active=${PROFILES_ACTIVE}" , "wallet-api.jar"]
