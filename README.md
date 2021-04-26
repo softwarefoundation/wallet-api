@@ -9,6 +9,8 @@
 ```
 
 # API RESTfull com Spring Boot utilizando TDD, CI e CD
+[![Continuous Deployment Heroku](https://github.com/softwarefoundation/wallet-api/actions/workflows/continuos-deployment-heroku.yml/badge.svg?branch=main)](https://github.com/softwarefoundation/wallet-api/actions/workflows/continuos-deployment-heroku.yml)
+
 Aprenda a criar APIs profissionais com testes utilizando Spring Boot e Java 11, do zero ao deploy em produção
 
 ## Acesso ao Swagger da aplicação
