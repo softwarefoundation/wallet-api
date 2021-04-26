@@ -58,7 +58,7 @@ Made with :heart: by [Dherkyan Ribeiro](https://www.credly.com/users/dherkyan-ri
 
 <p align="center">
 	<a href="">
-		<img src="https://o.remove.bg/downloads/11a3f378-f83b-4457-9dc9-a912f81286a5/img-removebg-preview.png">
+		<img src="https://i.imgur.com/BlmTWPV.png">
 	</a>
 </p>
 
