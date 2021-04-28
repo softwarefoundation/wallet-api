@@ -1,6 +1,9 @@
 name: Continuous Integration Docker Image
 
 on:
+  push:
+    branches:
+      - docker-image
   workflow_dispatch:
 
 jobs:
