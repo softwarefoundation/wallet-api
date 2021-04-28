@@ -32,6 +32,9 @@ Aprenda a criar APIs profissionais com testes utilizando Spring Boot e Java 11, 
 
 Palavras chave: Mockito, Junit, Tokens JWT, Spring Security, Flyway, H2, Integração Contínua e Deploy Automatizado com o Travis CI.
 
+## Gerenciamento do projeto
+Email de gerenciamento do projeto: wallet.softwarefoundation@gmail.com
+
 ## Banco de dados
 A aplicação utiliza o banco de dados H2 e como é um banco em memória ele é recriado a cada execução da aplicação.
   
