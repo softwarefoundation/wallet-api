@@ -1,0 +1,27 @@
+name: Continuous Integration Docker Image
+
+on:
+  workflow_dispatch:
+  
+	
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - uses: azure/docker-login@v1
+      with:
+        login-server: ghcr.io
+        username: ${{secrets.GH_PACKAGES_USER}}
+        password: ${{secrets.GH_PACKAGES_TOKEN}}
+    
+    - run: |
+        docker build -t ghcr.io/${{github.repository}}:latest -f Dockerfile .
+        docker tag ghcr.io/${{github.repository}}:latest ghcr.io/${{github.repository}}:${{github.ref}}
+    
+    - run: |
+        docker push ghcr.io/${{github.repository}}:latest
+        docker push ghcr.io/${{github.repository}}:${{github.ref}}
