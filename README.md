@@ -30,7 +30,7 @@ Aprenda a criar APIs profissionais com testes utilizando Spring Boot e Java 11, 
 10. Como configurar e utilizar o Github :heavy_check_mark:
 11. Configurar e utilizar a nuvem do Heroku :heavy_check_mark:
 
-Palavras chave: Mockito, Junit, Tokens JWT, Spring Security, Flyway, H2, Integração Contínua e Deploy Automatizado com o Travis CI.
+Palavras chave: Mockito, Junit, Tokens JWT, Spring Security, Flyway, H2, Docker, Deploy contínuo com o Github Actions.
 
 ## Gerenciamento do projeto
 Email de gerenciamento do projeto: wallet.softwarefoundation@gmail.com
