@@ -2,8 +2,6 @@ name: Continuous Integration Docker Image
 
 on:
   workflow_dispatch:
-  
-	
 
 jobs:
   build:
