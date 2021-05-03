@@ -13,8 +13,9 @@
 
 Aprenda a criar APIs profissionais com testes utilizando Spring Boot e Java 11, do zero ao deploy em produção
 
-## Acesso ao Swagger da aplicação
-[https://wallet-api-softwarefoundation.herokuapp.com/swagger-ui.html](https://wallet-api-softwarefoundation.herokuapp.com/swagger-ui.html)
+## Acesso ao Swagger da API
+- Heroku: [https://wallet-api-softwarefoundation.herokuapp.com/swagger-ui.html](https://wallet-api-softwarefoundation.herokuapp.com/swagger-ui.html)
+- Oracle Cloud: [Wallet-API - Oracle Cloud](http://168.138.146.138:8080/swagger-ui.html)
 
 
 ## Conteúdo
