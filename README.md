@@ -57,6 +57,8 @@ Esse projeto foi desenvolvido durante o curso: [API RESTfull com Spring Boot uti
 Made with :heart: by [Dherkyan Ribeiro](https://www.credly.com/users/dherkyan-ribeiro-da-silva/badges)
 
 
+![alt Oracle Certified Professional, Java SE 7 Programmer](https://images.credly.com/size/110x110/images/12bddaac-9b71-43fd-a81e-71ebd144ee52/BADGES_FINAL_PSM-I_600.png)
+![alt Oracle Certified Professional, Java SE 7 Programmer](https://images.credly.com/size/110x110/images/9956323d-90eb-4a7a-9fc6-4750ce433d3a/Oracle-Certification-badge_OC-Associate600X600.png)
 ![alt Oracle Certified Professional, Java SE 7 Programmer](https://images.credly.com/size/110x110/images/3661e48f-ee1c-47fc-a474-b84fca370a19/Oracle-Certification-badge_OC-Professional600X600.png)
 
 
