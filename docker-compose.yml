@@ -23,7 +23,9 @@ services:
       - sonarnet
     environment:
       - sonar.jdbc.url=jdbc:postgresql://pg-sonar:5432/sonar
-#      - SONAR_FORCEAUTHENTICATION=false
+      - SONAR_FORCEAUTHENTICATION=false
+      - sonar.login=sonar
+      - sonar.password=sonar
     depends_on:
       - pg-sonar
     volumes:
