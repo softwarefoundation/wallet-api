@@ -16,7 +16,7 @@ services:
 
   sonarqube:
     container_name: SONARQUBE
-    image: sonarqube:7.9.2-community
+    image: sonarqube:lts
     ports:
       - 9000:9000
     networks:
