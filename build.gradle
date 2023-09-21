@@ -2,7 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.4.5'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
-	id "org.sonarqube" version "2.7"
+	id "org.sonarqube" version "3.3"
 	id 'jacoco'
 	id 'com.avast.gradle.docker-compose' version '0.14.3'
 }
@@ -43,11 +43,16 @@ dependencies {
 sonarqube {
 	properties {
 		property 'sonar.host.url', 'http://localhost:9000'
+		property 'sonar.projectName', 'wallet-api.softwarefoundation.com'
+		property 'sonar.projectKey', 'wallet-api.softwarefoundation.com'
+		property 'sonar.login', 'admin'
+		property 'sonar.password', 'admin'
 	}
 }
 
 tasks.named('sonarqube').configure {
 	dependsOn test
+	outputs.dir("$buildDir/genOutput2")
 }
 
 test {
