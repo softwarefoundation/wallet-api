@@ -49,6 +49,14 @@ Configuração do console WEB: Para fazer login no console web utilize as config
 
 Essas informações podem ser encontraradas no arquivoapplication.properties
 
+## SomarQube:
+
+Executar analise do projeto no SonarQube
+```
+./gradlew --info sonarqube -D "sonar.projectKey=wallet-api.softwarefoundation.com" -D "sonar.host.url=http://localhost:9000" -D "sonar.login=1df61d8c781f85dd3323c815fa8e03e5a40318c5"
+
+```
+
 ## Referências:
 
 Esse projeto foi desenvolvido durante o curso: [API RESTfull com Spring Boot utilizando TDD, CI e CD](https://www.udemy.com/course/api-restfull-com-spring-boot-utilizando-tdd-ci-e-cd/ ) /  [Repositório de Referência](https://github.com/vitoralves/walletAPI)
