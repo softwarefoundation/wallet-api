@@ -40,6 +40,16 @@ dependencies {
 
 }
 
+sonarqube {
+	properties {
+		property 'sonar.host.url', 'http://localhost:9000'
+	}
+}
+
+tasks.named('sonarqube').configure {
+	dependsOn test
+}
+
 test {
 	useJUnitPlatform()
 }
