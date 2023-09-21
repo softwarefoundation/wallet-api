@@ -62,6 +62,9 @@ Executar analise do projeto no SonarQube
 Esse projeto foi desenvolvido durante o curso: [API RESTfull com Spring Boot utilizando TDD, CI e CD](https://www.udemy.com/course/api-restfull-com-spring-boot-utilizando-tdd-ci-e-cd/ ) /  [Repositório de Referência](https://github.com/vitoralves/walletAPI)
 
 
+
+Integração SonarQube: [How to Measure Code Coverage Using SonarQube and Jacoco](https://tomgregory.com/how-to-measure-code-coverage-using-sonarqube-and-jacoco/ )
+
 Made with :heart: by [Dherkyan Ribeiro](https://www.credly.com/users/dherkyan-ribeiro-da-silva/badges)
 
 
