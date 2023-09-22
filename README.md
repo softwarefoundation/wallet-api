@@ -49,13 +49,34 @@ Configuração do console WEB: Para fazer login no console web utilize as config
 
 Essas informações podem ser encontraradas no arquivoapplication.properties
 
-## SomarQube:
+## Ambiente:
+
+Requisitos: 
+* Java 11
+* Docker
+
+Execute os comandos na raiz do projeto
+
+```
+# Cria o Sonarqube
+./gradlew composeUp
+
+# Executa a anaálise de código
+./gradlew sonarqube
+```
+* URL Sonarqube: http://localhost:9000
+* Usuário: admin
+* Senha: admin
+
+## SonarQube:
 
 Executar analise do projeto no SonarQube
 ```
 ./gradlew --info sonarqube -D "sonar.projectKey=wallet-api.softwarefoundation.com" -D "sonar.host.url=http://localhost:9000" -D "sonar.login=1df61d8c781f85dd3323c815fa8e03e5a40318c5"
 
 ```
+
+
 
 ## Referências:
 
