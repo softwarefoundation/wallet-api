@@ -7,10 +7,12 @@ metadata:
 spec:
   containers:
     - name: wallet-api
-      image: dherkyan/wallet-api:24
+      image: dherkyan/wallet-api:25
       env:
         - name: PROFILES_ACTIVE
           value: dev
+        - name: H2_WEB_ALLOW_OTHERS
+          value: "true"
       ports:
         - containerPort: 8080 # porta da aplicação
 ---
