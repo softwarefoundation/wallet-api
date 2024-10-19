@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-wallet-api
+  labels:
+    type: backend-wallet-api
+spec:
+  containers:
+    - name: wallet-api
+      image: dherkyan/wallet-api:24
+      env:
+        - name: PROFILES_ACTIVE
+          value: dev
+      ports:
+        - containerPort: 8080 # porta da aplicação
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-wallet-api
+spec:
+  type: NodePort
+  selector:
+    type: backend-wallet-api
+  ports:
+    - name: http
+      targetPort: 8080 # porta da aplicação
+      port: 8080 # porta da aplicação
+      nodePort: 30008 # porta que será exporta externamente
