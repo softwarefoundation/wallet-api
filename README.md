@@ -52,7 +52,7 @@ Essas informações podem ser encontraradas no arquivoapplication.properties
 ## Kubernetes
 
 O arquivo wallet-api-deploy-pod-k8s.yaml pode ser utilizado para realizar deploy da aplicação num cluster kubernetres, como por exemplo o minikube, através do comando ```kubectl apply -f wallet-api-deploy-pod-k8s.yaml``` isso 
-fará o deploy da aplicação assim como criar uma url de acesso que pode ser obetida utilizando o comando ```minikube service --url service-wallet-api --namespace=default``` o retorno será algo do tipo http://172.28.79.229:30008 e
+fará o deploy da aplicação assim como criar uma url de acesso que pode ser obetida utilizando o comando ```minikube service --url wallet-api-service-node-port``` o retorno será algo do tipo http://172.28.79.229:30008 e
 para acessar o swagger da aplicação utilize a url obitida mais o swagger. Exe.: http://172.28.79.229:30008/swagger-ui.html
 
 ## Referências:
