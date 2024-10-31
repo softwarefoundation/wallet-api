@@ -4,6 +4,7 @@ import com.softwarefoundation.walletapi.dto.UserWalletDto;
 import com.softwarefoundation.walletapi.entity.UserWallet;
 import com.softwarefoundation.walletapi.response.Response;
 import com.softwarefoundation.walletapi.service.UserWalletService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +13,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/user-wallet")

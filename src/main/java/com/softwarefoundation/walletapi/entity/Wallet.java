@@ -1,10 +1,15 @@
 package com.softwarefoundation.walletapi.entity;
 
 import com.softwarefoundation.walletapi.dto.WalletDto;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+
 import java.io.Serializable;
 
 @Data

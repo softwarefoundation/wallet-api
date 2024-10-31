@@ -5,6 +5,7 @@ import com.softwarefoundation.walletapi.entity.User;
 import com.softwarefoundation.walletapi.service.UserService;
 import com.softwarefoundation.walletapi.response.Response;
 import com.softwarefoundation.walletapi.util.Bcrypt;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/user")

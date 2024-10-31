@@ -1,11 +1,12 @@
 package com.softwarefoundation.walletapi.security;
 
+import com.softwarefoundation.walletapi.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
-public class JwtUser implements UserDetails {
+public class UserDetailsDto implements UserDetails {
 
     private static final long serialVersionUID = -268046329085485932L;
 
@@ -14,10 +15,14 @@ public class JwtUser implements UserDetails {
     private String password;
 
 
-    public JwtUser(Long id, String username, String password) {
+    public UserDetailsDto(Long id, String username, String password) {
         this.id = id;
         this.username = username;
         this.password = password;
+    }
+
+    public UserDetailsDto(User user) {
+        this(user.getId(), user.getEmail(), user.getSenha());
     }
 
     public Long getId() {

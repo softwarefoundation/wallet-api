@@ -1,12 +1,13 @@
 package com.softwarefoundation.walletapi.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import jakarta.validation.constraints.Email;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.lang.NonNull;
 
-import javax.validation.constraints.Email;
+//import javax.validation.constraints.Email;
 
 @Data
 @NoArgsConstructor

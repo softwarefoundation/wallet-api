@@ -1,11 +1,12 @@
 package com.softwarefoundation.walletapi.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+
 import java.math.BigDecimal;
 import java.util.Date;
 

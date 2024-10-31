@@ -3,9 +3,9 @@ package com.softwarefoundation.walletapi.dto;
 import com.softwarefoundation.walletapi.entity.User;
 import com.softwarefoundation.walletapi.entity.UserWallet;
 import com.softwarefoundation.walletapi.entity.Wallet;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Data

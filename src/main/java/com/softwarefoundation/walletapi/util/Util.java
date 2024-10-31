@@ -20,12 +20,8 @@ public class Util {
         try {
             Optional<User> user = staticService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
 
-            if (user.isPresent()) {
-                return user.get().getId();
-            }else {
-                return null;
-            }
-        }catch (Exception e) {
+            return user.isPresent()? user.get().getId() : null;
+        } catch (Exception e) {
             return null;
         }
     }
