@@ -3,6 +3,7 @@ package com.softwarefoundation.walletapi.repository;
 import com.softwarefoundation.walletapi.entity.Wallet;
 import com.softwarefoundation.walletapi.entity.WalletItem;
 import com.softwarefoundation.walletapi.util.enums.TipoEnum;
+import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
-import javax.validation.ConstraintViolationException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
