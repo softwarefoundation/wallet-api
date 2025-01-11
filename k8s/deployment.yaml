@@ -21,11 +21,11 @@ kind: Service
 metadata:
   name: service-wallet-api
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     type: backend-wallet-api
   ports:
     - name: http
       targetPort: 8080 # porta da aplicação
       port: 8080 # porta da aplicação
-      nodePort: 30008 # porta que será exporta externamente
+#      nodePort: 30008 # porta que será exporta externamente
